@@ -12,9 +12,9 @@ RUN pip install gunicorn==20.1.0
 
 COPY . .
 
-RUN python manage.py migrate
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-RUN python manage.py collectstatic
-
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "newvc.wsgi"]

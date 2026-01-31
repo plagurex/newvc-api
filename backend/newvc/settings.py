@@ -18,7 +18,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'newvc.ru']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'newvc.ru',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost:8001',
+    'https://127.0.0.1:8001',
+    'https://newvc.ru',
+]
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -103,7 +114,7 @@ USE_TZ = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/data/db.sqlite3',
+        'NAME': BASE_DIR / 'data/db.sqlite3',
     }
 }
 
