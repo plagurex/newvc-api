@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Make Migrations",
+            "type": "shell",
+            "command": "${workspaceFolder}/backend/venv/bin/python ${workspaceFolder}/backend/newvc/manage.py makemigrations",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "Migrate",
+            "type": "shell",
+            "command": "${workspaceFolder}/backend/venv/bin/python ${workspaceFolder}/backend/newvc/manage.py migrate",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "Show Migrations",
+            "type": "shell",
+            "command": "${workspaceFolder}/backend/venv/bin/python ${workspaceFolder}/backend/newvc/manage.py showmigrations",
+            "group": "test"
+        }
+    ]
+}
