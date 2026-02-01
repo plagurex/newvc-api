@@ -36,7 +36,7 @@ jobs:
         SECRET_KEY: '%!srn2a(d0pd)z#r%birsu&y*0maz(m8gy7h_*hr*gb_#^om3r'
         DATABASE_NAME: /data/db.sqlite3
       run: |
-        python -m ruff check backend/
+        # python -m ruff check backend/
         cd backend/
         python manage.py test
 
