@@ -1,18 +1,22 @@
 volumes:
   static:
+  data:
 
 services:
   backend:
     build: ./backend/
     env_file: .env
     volumes:
-      - ./data:/app/data
+      - ./data:/data
       - static:/static
-  gateway:
-    build: ./gateway/
+  nginx:
+    image: nginx:latest
+    container_name: my-nginx
     ports:
       - 8000:80
       - 8001:443
+    restart: unless-stopped
     volumes:
+      - ./nginx.conf:/etc/nginx/templates/default.conf.template
       - static:/static
       - ./ssl:/ssl

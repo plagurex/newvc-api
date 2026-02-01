@@ -155,6 +155,7 @@ activemq-data/
 
 # Environments
 .env
+.env.*
 .envrc
 .venv
 env/
@@ -226,3 +227,4 @@ static/
 ssl/
 
 data/
+.DS_store
