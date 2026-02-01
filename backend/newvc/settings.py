@@ -35,7 +35,7 @@ CSRF_TRUSTED_ORIGINS = [
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9_j)(#rds&&78v1zr0c5_mq6m7a-6zm=+hb^e@jruhxq3w6$oh'
+SECRET_KEY = os.getenv('SECRET_KEY', '')
 
 # Application definition
 
