@@ -15,8 +15,8 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+# DEBUG = True
 
 if not DEBUG:
     ALLOWED_HOSTS = [
