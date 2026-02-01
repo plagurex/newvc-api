@@ -13,22 +13,27 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+# DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'newvc.ru',
-]
+if not DEBUG:
+    ALLOWED_HOSTS = [
+        'newvc.ru',
+    ]
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://localhost:8001',
-    'https://127.0.0.1:8001',
-    'https://newvc.ru',
-]
+    CSRF_TRUSTED_ORIGINS = [
+        'https://newvc.ru',
+    ]
+else:
+    ALLOWED_HOSTS = ['*']
+
+    CSRF_TRUSTED_ORIGINS = [
+        'http://localhost:8000',
+        'http://127.0.0.1:8000',
+    ]
+    SECURE_SSL_REDIRECT = False
 
 
 # Quick-start development settings - unsuitable for production
@@ -110,11 +115,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-# SQLite для разработки
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'data/db.sqlite3',
+        'NAME': os.getenv('DATABASE_NAME', BASE_DIR / '../data/db.sqlite3'),
     }
 }
 
@@ -124,3 +128,9 @@ DATABASES = {
 STATIC_URL = 'static/'
 
 STATIC_ROOT = os.getenv('STATIC_ROOT', './static/')
+
+if DEBUG:
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+        BASE_DIR / 'site',
+    ]

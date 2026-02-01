@@ -150,10 +150,13 @@ body {
     gap: 15px;
 }
 
-.logo img {
-    /* width: 40px; */
+#mainLogo {
     height: 60px;
-    /* border-radius: 6px; */
+}
+
+#smallLogo {
+    height: 60px;
+    display: none;
 }
 
 .logo h1 {
@@ -261,7 +264,7 @@ body {
 }
 
 .hero-image {
-    flex: 1;
+    flex: 0.9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -425,6 +428,10 @@ body {
     padding: 40px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+}
+
+.mods-header {
+    margin-bottom: 20px;
 }
 
 .mod-list {
@@ -819,26 +826,6 @@ body {
 
 /* Адаптивность */
 @media (max-width: 992px) {
-    .hero .container {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .hero h2 {
-        font-size: 2.5rem;
-    }
-    
-    .register-steps {
-        flex-direction: column;
-    }
-    
-    .download-section {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-@media (max-width: 768px) {
     .main-nav {
         position: fixed;
         top: 80px;
@@ -881,7 +868,39 @@ body {
     .menu-toggle {
         display: block;
     }
+
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image {
+        display: none;
+    }
     
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+    
+    .register-steps {
+        flex-direction: column;
+    }
+    
+    .download-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .version-badge {
+        display: none;
+    }
+
+    .platforms {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
     .section {
         padding: 60px 0;
     }
@@ -892,6 +911,11 @@ body {
     
     .mods-content, .launcher-content, .register-content, .contact-content {
         padding: 25px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 30px;
     }
 }
 
@@ -911,9 +935,43 @@ body {
     .btn {
         width: 100%;
     }
-    
-    .footer-links {
-        flex-direction: column;
-        gap: 30px;
+
+    #mainLogo {
+        height: auto;
+        max-width: 90%;
+    }
+
+    #mods .container, #launcher .container, #register .container {
+        padding: 0;
+    }
+
+    .mods-content {
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .mod-list {
+        padding: 25px;
+    }
+
+    .version-info {
+        border-radius: 0;
+    }
+
+    .mods-content, .launcher-content, .register-content, .contact-content, .about-content {
+        border-radius: 0;
+        padding-bottom: 40px;
+    }
+
+    .footer {
+        padding: 0;
+    }
+
+    .footer .container {
+        padding: 25px;
+    }
+
+    .section {
+        padding-bottom: 0;
     }
 }

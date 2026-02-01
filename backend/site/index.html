@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Minecraftia&display=swap" rel="stylesheet">
-    <!-- <link rel="icon" type="image/x-icon" href="https://static.wikia.nocookie.net/minecraft/images/f/fc/Grass_Block_%28texture%29_JE5.png"> -->
+    <link rel="icon" type="image/x-icon" href="android-chrome-512x512.png">
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="minecraft_title.png" alt="Блок травы">
+                <img src="minecraft_title.png" alt="Блок травы" id="mainLogo">
                 <!-- <h1>New Valera Craft</h1> -->
                 <span class="version-badge">1.20.1</span>
             </div>
@@ -42,7 +42,7 @@
                     <div class="hero-badges">
                         <span class="badge"><i class="fas fa-user-lock"></i> Приватный</span>
                         <span class="badge"><i class="fas fa-hammer"></i> Create</span>
-                        <span class="badge"><i class="fas fa-user-friends"></i> Белая сборка</span>
+                        <!-- <span class="badge"><i class="fas fa-user-friends"></i> Белая сборка</span> -->
                         <span class="badge"><i class="fas fa-cogs"></i> Свой лаунчер</span>
                     </div>
                     <div class="hero-buttons">
@@ -112,10 +112,11 @@
                 <h2 class="section-title"><i class="fas fa-cogs"></i> Моды и сборка</h2>
                 <div class="mods-content">
                     <div class="mods-info">
-                        <h3>Основные моды</h3>
-                        <p>Наша сборка основана на Fabric 1.20.1 с модом Create в качестве центрального элемента геймплея.</p>
-                        
                         <div class="mod-list">
+                            <div class="mods-header">
+                                <h3>Основные моды</h3>
+                                <p>Наша сборка основана на Fabric 1.20.1 с модом Create в качестве центрального элемента геймплея.</p>
+                            </div>
                             <div class="mod-item">
                                 <div class="mod-icon">
                                     <i class="fas fa-cog"></i>
@@ -203,7 +204,7 @@
                                 <div class="platforms">
                                     <div class="platform">
                                         <i class="fab fa-windows"></i>
-                                        <span>Windows (64-bit)</span>
+                                        <span>Windows</span>
                                     </div>
                                     <div class="platform">
                                         <i class="fab fa-apple"></i>
@@ -375,7 +376,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="https://static.wikia.nocookie.net/minecraft/images/f/fc/Grass_Block_%28texture%29_JE5.png" alt="Блок травы">
+                    <img src="android-chrome-512x512.png" alt="Блок травы">
                     <h3>New Valera Craft</h3>
                     <p>Приватный майнкрафт сервер на базе Create</p>
                 </div>
