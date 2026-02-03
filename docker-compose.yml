@@ -7,8 +7,14 @@ services:
     build: ./backend/
     env_file: .env
     volumes:
-      - ./data:/data
+      - data:/data
       - static:/static
+    networks:
+      - app-network
+    container_name: backend
+    environment:
+      - STATIC_ROOT=/static
+      - DATABASE_NAME=/data/db.sqlite3
   nginx:
     image: nginx:latest
     container_name: my-nginx
