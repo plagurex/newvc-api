@@ -33,3 +33,5 @@ services:
       - backend_static:/backend_static
       - ./frontend:/frontend_static
       - ./ssl:/ssl
+    networks:
+      - app-network
