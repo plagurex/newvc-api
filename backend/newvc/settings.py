@@ -130,8 +130,10 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = os.getenv('STATIC_ROOT', BASE_DIR / 'static')
 
+APPEND_SLASH = True
+
 if DEBUG:
     STATICFILES_DIRS = [
-        BASE_DIR / 'static',
-        BASE_DIR / 'site',
+        BASE_DIR.parent / 'static',
+        BASE_DIR.parent / 'frontend',
     ]

@@ -1,6 +1,10 @@
 volumes:
-  static:
+  backend_static:
   data:
+
+networks:
+  app-network:
+    driver: bridge
 
 services:
   backend:
@@ -8,7 +12,7 @@ services:
     env_file: .env
     volumes:
       - data:/data
-      - static:/static
+      - backend_static:/static
     networks:
       - app-network
     container_name: backend
@@ -24,5 +28,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./nginx.conf:/etc/nginx/templates/default.conf.template
-      - static:/static
+      - backend_static:/backend_static
+      - ./frontend:/frontend_static
       - ./ssl:/ssl
+    networks:
+      - app-network

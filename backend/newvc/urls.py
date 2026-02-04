@@ -24,7 +24,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 
 urlpatterns = [
-    path('admin', admin.site.urls),
+    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
@@ -40,7 +40,7 @@ if settings.DEBUG:
     # 4. КОРЕНЬ (/) → index.html
     urlpatterns += [
         path('', serve, {
-            'document_root': settings.BASE_DIR / 'site',
+            'document_root': settings.BASE_DIR.parent / 'frontend',
             'path': 'index.html'
         }),
     ]
@@ -48,6 +48,6 @@ if settings.DEBUG:
     # 5. Остальные файлы из site/
     urlpatterns += [
         re_path(r'^(?P<path>.+)$', serve, {
-            'document_root': settings.BASE_DIR / 'site',
+            'document_root': settings.BASE_DIR.parent / 'frontend',
         }),
     ]
