@@ -1,7 +1,7 @@
 version: '3.8'
 
 volumes:
-  static:
+  backend_static:
   data:
 
 networks:
@@ -13,12 +13,14 @@ services:
     build: ./backend/
     env_file: .env
     volumes:
-      - ./data:/data
-      - static:/static
+      - data:/data
+      - backend_static:/static
     networks:
       - app-network
     container_name: backend
-
+    environment:
+      - STATIC_ROOT=/static
+      - DATABASE_NAME=/data/db.sqlite3
   nginx:
     image: nginx:latest
     container_name: my-nginx
@@ -28,9 +30,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./nginx.conf:/etc/nginx/templates/default.conf.template
-      - static:/static
+      - backend_static:/backend_static
+      - ./frontend:/frontend_static
       - ./ssl:/ssl
-    networks:
-      - app-network
-    depends_on:
-      - backend

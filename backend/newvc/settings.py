@@ -16,7 +16,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
-# DEBUG = True
 
 if not DEBUG:
     ALLOWED_HOSTS = [
@@ -40,7 +39,7 @@ else:
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', '')
+SECRET_KEY = os.getenv('SECRET_KEY', 'some-key')
 
 # Application definition
 
@@ -53,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
     'homepage.apps.HomepageConfig',
+    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'newvc.urls'
@@ -118,7 +119,7 @@ USE_TZ = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.getenv('DATABASE_NAME', BASE_DIR / '../data/db.sqlite3'),
+        'NAME': os.getenv('DATABASE_NAME', BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -127,10 +128,12 @@ DATABASES = {
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = os.getenv('STATIC_ROOT', './static/')
+STATIC_ROOT = os.getenv('STATIC_ROOT', BASE_DIR / 'static')
+
+APPEND_SLASH = True
 
 if DEBUG:
     STATICFILES_DIRS = [
-        BASE_DIR / 'static',
-        BASE_DIR / 'site',
+        BASE_DIR.parent / 'static',
+        BASE_DIR.parent / 'frontend',
     ]
